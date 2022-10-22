@@ -1,6 +1,6 @@
 // import { TodosAccess } from './todosAcess'
 // import { AttachmentUtils } from './attachmentUtils';
-// import { TodoItem } from '../models/TodoItem'
+import { TodoItem } from '../models/TodoItem'
  import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 // import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 // import { createLogger } from '../utils/logger'
@@ -10,7 +10,7 @@ import { getUserId } from '../lambda/utils'
 // import * as createError from 'http-errors'
 
 // // TODO: Implement businessLogic
-export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayProxyEvent)
+export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayProxyEvent): TodoItem
 {
     const todoId = uuid.v4()
     const todo = 
@@ -24,5 +24,5 @@ export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayPro
       attachmentUrl: '',
       ...todoRequest
      }
-     return todo
+     return todo as TodoItem
 }
