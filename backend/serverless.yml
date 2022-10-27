@@ -7,11 +7,17 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
+  # - serverless-reqvalidator-plugin
+  - serverless-aws-documentation
 
 provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: '20201221'
+  
+  # Enable gzip compression
+  apiGateway:
+    minimumCompressionSize: 1024
 
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
@@ -63,6 +69,11 @@ functions:
         Action:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - xray:PutTraceSegments
+        Resource:
+          - '*'
 
   # TODO: Configure this function - 
   # Provide iamRoleStatements property. Decide the Actions and AWS Resource. 
@@ -76,6 +87,12 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
+          documentation:
+            summary: "Todo Create"
+            description: "Create a new todo item"
+            requestModels:
+              "application/json": CreateTodoRequest
+          reqValidatorName: RequestBodyValidator
           request:
             schemas:
               application/json: ${file(models/create-todo-model.json)}
@@ -84,6 +101,11 @@ functions:
         Action:
           - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - xray:PutTraceSegments
+        Resource:
+          - '*'
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements, and request schemas
@@ -95,11 +117,22 @@ functions:
           path: todos/{todoId}
           authorizer: Auth
           cors: true
+          documentation:
+            summary: "Todo Update"
+            description: "Update a todo item"
+            requestModels:
+              "application/json": UpdateTodoRequest
+          reqValidatorName: RequestBodyValidator
     iamRoleStatements:
       - Effect: Allow
         Action:
           - dynamodb:UpdateItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - xray:PutTraceSegments
+        Resource:
+          - '*'
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements
@@ -109,6 +142,18 @@ functions:
       - http:
           method: delete
           path: todos/{todoId}
+          authorizer: Auth
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - xray:PutTraceSegments
+        Resource:
+          - '*'
 
   # TODO: Configure this function
   # Provide property for setting up CORS, Authorizer, iamRoleStatements
@@ -118,8 +163,8 @@ functions:
       - http:
           method: post
           path: todos/{todoId}/attachment
-          authorizer: Auth
           cors: true
+          authorizer: Auth
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -133,6 +178,7 @@ functions:
         Action:
           - s3:PutObject
           - s3:GetObject
+          - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
 resources:
@@ -146,8 +192,19 @@ resources:
         ResponseParameters:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
           gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'*'"
         ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: ApiGatewayRestApi
+
+    GatewayResponseDefault5XX:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST,DELETE,PATCH,PUT'"
+        ResponseType: DEFAULT_5XX
         RestApiId:
           Ref: ApiGatewayRestApi
     
@@ -169,6 +226,14 @@ resources:
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TODOS_TABLE}
+    onlyBody:
+      Type: "AWS::ApiGateway::RequestValidator"
+      Properties:
+        Name: 'only-body'
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: true
+        ValidateRequestParameters: false
         LocalSecondaryIndexes:
           - IndexName: ${self:provider.environment.TODOS_CREATED_AT_INDEX}
             KeySchema:
@@ -199,6 +264,15 @@ resources:
                 - DELETE
                 - HEAD
               MaxAge: 3000
+
+    RequestBodyValidator:
+      Type: AWS::ApiGateway::RequestValidator
+      Properties:
+        Name: 'request-body-validator'
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: true
+        ValidateRequestParameters: false
 
     # TODO: Complete the policy below and attach it to the bucket defined above
     # For cross referencing the name of the bucket, use "!Ref AttachmentsBucket"

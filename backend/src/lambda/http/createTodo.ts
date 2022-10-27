@@ -5,8 +5,8 @@ import { cors } from 'middy/middlewares'
 import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 //  import { getUserId } from '../utils';
 //  import { createTodo } from '../../businessLogic/todos'
-import { createTodo } from '../../helpers/todosAcess'
-import { todoBuilder } from '../../helpers/todos'
+import { createTodo } from '../../dataLayer/todosAcess'
+import { todoBuilder } from '../../businessLogic/todos'
 // import * as uuid from 'uuid'
 
 export const handler = middy(
@@ -17,13 +17,13 @@ export const handler = middy(
 
     const todo = todoBuilder(newTodo, event)
 
-     const createdTodo = await createTodo(todo)
+    await createTodo(todo)
 
 
     return  {
       statusCode: 201,
       body: JSON.stringify({
-        createdTodo
+        todo
       })
     }
   }
