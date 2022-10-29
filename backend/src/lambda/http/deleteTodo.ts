@@ -4,16 +4,33 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
 
-// import { deleteTodo } from '../../businessLogic/todos'
-// import { getUserId } from '../utils'
+import { deleteTodo, todoExists } from '../../businessLogic/todos'
+import { getUserId } from '../utils'
 
 export const handler = middy(
-  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
+  {
     const todoId = event.pathParameters.todoId
-    console.log(todoId)
+    const userId = getUserId(event);
     // TODO: Remove a TODO item by id
+    const validTodoId = await todoExists(todoId, userId);
+    if (!validTodoId) 
+    {
+      return {
+        statusCode: 404,
+        body: JSON.stringify(
+          {
+          error: 'Todo does not exist'
+          })
+      }
+    }
     
-    return undefined
+    await deleteTodo(todoId, userId)
+    
+    return {
+      statusCode: 200,
+      body: ''
+    }
   }
 )
 

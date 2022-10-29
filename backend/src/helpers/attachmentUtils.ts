@@ -16,3 +16,7 @@ export function getUploadUrl(todoId: string) {
       Expires: 420
     })
   }
+  
+export function generateImageUrl(imageId: string) {
+  return `https://${bucketName}.s3.amazonaws.com/${imageId}`
+}
