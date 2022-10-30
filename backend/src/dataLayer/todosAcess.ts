@@ -35,6 +35,12 @@ export class TodosAccess
         },
       ScanIndexForward: false
     }).promise()
+    
+    const items = result.Items
+    logger.info('getAllTodosByUserId' + JSON.stringify({
+      result: items
+    }))
+
     return result.Items as TodoItem[]
   }
 
