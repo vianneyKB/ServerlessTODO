@@ -1,5 +1,5 @@
-import { CustomAuthorizerEvent, CustomAuthorizerResult } from 'aws-lambda'
 import 'source-map-support/register'
+import { CustomAuthorizerEvent, CustomAuthorizerResult } from 'aws-lambda'
 import { verify } from 'jsonwebtoken'
 import { createLogger } from '../../utils/logger'
 import Axios from 'axios'

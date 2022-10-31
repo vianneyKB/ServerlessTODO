@@ -11,14 +11,14 @@ const AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
 
 // const docClient: DocumentClient = createDynamoDBClient() // new XAWS.DynamoDB.DocumentClient()
-const index = process.env.TODOS_CREATED_AT_INDEX
+// const index = process.env.TODOS_CREATED_AT_INDEX
 // const todosTable = process.env.TODOS_TABLE
 export class TodosAccess 
 {
   constructor(
     // private readonly docClient: DocumentClient = createDynamoDBClient(),
     private readonly todosTable = process.env.TODOS_TABLE,
-    private readonly docClient: DocumentClient = new XAWS.DynamoDB.createDynamoDBClient(),
+    private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
     private readonly s3Client: S3 = new XAWS.S3({ signatureVersion: 'v4'}),
     private readonly bucketName = process.env.S3_BUCKET_NAME,
     private readonly urlExpiration = process.env.SIGNED_URL_EXPIRATION
@@ -60,27 +60,27 @@ async createTodo(todo: TodoItem): Promise<TodoItem>
       return todo as TodoItem
   }
 
-async getTodoById(todoId: string): Promise<TodoItem>  
-  {
-    const result = await this.docClient.query(
-      {
-        TableName: this.todosTable,
-        IndexName: index,
-        KeyConditionExpression: 'todoId = :todoId',
-        ExpressionAttributeValues: 
-        {
-          ':todoId': todoId
-        }
-      }).promise()
+// async getTodoById(todoId: string): Promise<TodoItem>  
+//   {
+//     const result = await this.docClient.query(
+//       {
+//         TableName: this.todosTable,
+//         IndexName: index,
+//         KeyConditionExpression: 'todoId = :todoId',
+//         ExpressionAttributeValues: 
+//         {
+//           ':todoId': todoId
+//         }
+//       }).promise()
 
-    const items = result.Items
-      if (items.length !== 0) 
-      {
-        return result.Items[0] as TodoItem
-      }
+//     const items = result.Items
+//       if (items.length !== 0) 
+//       {
+//         return result.Items[0] as TodoItem
+//       }
 
-    return null
-  }
+//     return null
+//   }
 
 async deleteTodo(userId: string, todoId: string): Promise<string>
   {

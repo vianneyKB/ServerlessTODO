@@ -3,15 +3,15 @@ import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } f
 import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { createTodo } from '../../businessLogic/todos'
 
-import * as middy from 'middy'
+// import * as middy from 'middy'
 // import { cors } from 'middy/middlewares'
 //  import { getUserId } from '../utils';
 //  import { createTodo } from '../../businessLogic/todos'
 // import { todoBuilder } from '../../businessLogic/todos'
 // import * as uuid from 'uuid'
 
-export const handler: APIGatewayProxyHandler = middy(
-  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
+  {
     const newTodo: CreateTodoRequest = JSON.parse(event.body)
 
     // TODO: Implement creating a new TODO item
@@ -33,7 +33,6 @@ export const handler: APIGatewayProxyHandler = middy(
       })
     }
   }
-)
 
 // handler.use(
 //   cors({
