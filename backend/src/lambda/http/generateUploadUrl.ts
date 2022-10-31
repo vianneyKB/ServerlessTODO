@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } f
 import { generateUploadUrl} from '../../businessLogic/todos'
 // import * as middy from 'middy'
 
-// import { cors, httpErrorHandler } from 'middy/middlewares'
+import { cors, httpErrorHandler } from 'middy/middlewares'
 // import { getUploadUrl } from '../../helpers/attachmentUtils'
 
 // import { createAttachmentPresignedUrl } from '../../businessLogic/todos'
@@ -43,10 +43,10 @@ export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent
     // }
   }
 
-// handler
-//   .use(httpErrorHandler())
-//   .use(
-//     cors({
-//       credentials: true
-//     })
-//   )
+  handler
+  .caller(httpErrorHandler())
+  .use(
+    cors({
+      credentials: true
+    })
+  )

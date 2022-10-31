@@ -32,7 +32,7 @@ provider:
   environment:
     TODOS_TABLE: Todos-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-c4-todo-vianneykb-images-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 420
     AUTH_0_SECRET_ID: eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO
 

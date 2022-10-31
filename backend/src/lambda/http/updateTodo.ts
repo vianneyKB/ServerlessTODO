@@ -3,7 +3,7 @@ import 'source-map-support/register'
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
 // import * as middy from 'middy'
 
-// import { cors, httpErrorHandler } from 'middy/middlewares'
+import { cors, httpErrorHandler } from 'middy/middlewares'
 
 import { updateTodo } from '../../businessLogic/todos'
 import { UpdateTodoRequest } from '../../requests/UpdateTodoRequest'
@@ -32,11 +32,11 @@ export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent
     }),
     }
   }
-
-// handler
-//   .use(httpErrorHandler())
-//   .use(
-//     cors({
-//       credentials: true
-//     })
-//   )
+  
+  handler
+  .caller(httpErrorHandler())
+  .use(
+    cors({
+      credentials: true
+    })
+  )

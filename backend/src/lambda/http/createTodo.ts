@@ -4,7 +4,7 @@ import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { createTodo } from '../../businessLogic/todos'
 
 // import * as middy from 'middy'
-// import { cors } from 'middy/middlewares'
+import { cors, httpErrorHandler } from 'middy/middlewares'
 //  import { getUserId } from '../utils';
 //  import { createTodo } from '../../businessLogic/todos'
 // import { todoBuilder } from '../../businessLogic/todos'
@@ -34,8 +34,11 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     }
   }
 
-// handler.use(
-//   cors({
-//     credentials: true
-//   })
-// )
+
+  handler
+  .caller(httpErrorHandler())
+  .use(
+    cors({
+      credentials: true
+    })
+  )
