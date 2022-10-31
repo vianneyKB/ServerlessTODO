@@ -57,7 +57,7 @@ custom:
         title: Serverless Todo App
         description: Serverless application for Todos
     models:
-      - name: CreateTodoRequest
+      - name: TodoRequest
         contentType: application/json
         schema: ${file(models/create-todo-model.json)}
       - name: UpdateTodoRequest
@@ -104,8 +104,7 @@ functions:
           documentation:
             summary: "Todo Create"
             description: "Create a new todo item"
-            requestModels:
-              "application/json": CreateTodoRequest
+            requestModels: "application/json": TodoRequest
           reqValidatorName: RequestBodyValidator
           request:
             schemas:
@@ -134,8 +133,7 @@ functions:
           documentation:
             summary: "Todo Update"
             description: "Update a todo item"
-            requestModels:
-              "application/json": UpdateTodoRequest
+            requestModels: "application/json": UpdateTodoRequest
           reqValidatorName: RequestBodyValidator
     iamRoleStatements:
       - Effect: Allow
@@ -235,10 +233,10 @@ resources:
         GlobalSecondaryIndexes:
           - IndexName: ${self:provider.environment.TODOS_CREATED_AT_INDEX}
             KeySchema:
-              - AttributeName: userId
-                KeyType: HASH
-              - AttributeName: createdAt
-                KeyType: RANGE
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: createdAt
+            KeyType: RANGE
             Projection:
               ProjectionType: ALL 
               # What attributes will be copied to an index
@@ -251,8 +249,7 @@ resources:
         BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
         CorsConfiguration:
           CorsRules:
-            -
-              AllowedOrigins:
+            - AllowedOrigins:
                 - '*'
               AllowedHeaders:
                 - '*'

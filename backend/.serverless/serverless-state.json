@@ -323,7 +323,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_Auth.handler",
               "Runtime": "nodejs12.x",
@@ -360,7 +360,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_GetTodos.handler",
               "Runtime": "nodejs12.x",
@@ -398,7 +398,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_CreateTodo.handler",
               "Runtime": "nodejs12.x",
@@ -436,7 +436,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_UpdateTodo.handler",
               "Runtime": "nodejs12.x",
@@ -474,7 +474,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_DeleteTodo.handler",
               "Runtime": "nodejs12.x",
@@ -512,7 +512,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/serverless-todo-app.zip"
               },
               "Handler": "s_GenerateUploadUrl.handler",
               "Runtime": "nodejs12.x",
@@ -543,64 +543,64 @@
               "GenerateUploadUrlLogGroup"
             ]
           },
-          "AuthLambdaVersionnK3IRofQYouVo859mVJNGUGCbcEDv4JJtst6h2ODF5E": {
+          "AuthLambdaVersionNCuyNn3XzeL00voKPi8o3Bpal3VdAZ7jsfTeAfIWY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AuthLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
-          "GetTodosLambdaVersion7UBAvCO5xWUqXWWLkr8AbiyTvGkr3RLWvzPhSoypW8Q": {
+          "GetTodosLambdaVersion3AzsHjEnBrAYmXSk4RXkENru8iacpVO5EIbqTTuORhM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetTodosLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
-          "CreateTodoLambdaVersion8CRfF8VrAkIEvfRJEeebCJrLuSkUCWmTJLOO3b6AI": {
+          "CreateTodoLambdaVersionaBmNSXopUnpQUZSY0CTcrQL65HGUc2E0PxLj9U1AyQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateTodoLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
-          "UpdateTodoLambdaVersion2R4tuFQ0Jknai5bHE9RPlpHZRkU03gBm40UqJJi4": {
+          "UpdateTodoLambdaVersionVR59ElhWtYHEDAPPqDEKrxQVnItHBDWJXzh5GSI3UY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateTodoLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
-          "DeleteTodoLambdaVersionQ69ZQVmL7ETpwB8asDA1o3JrLSHXIW6j2QOOnUv8GAM": {
+          "DeleteTodoLambdaVersionY9qfHQgCvB350XTxkpt9XpdeUnZ9z2U0eaFzeg0m1Zc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteTodoLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
-          "GenerateUploadUrlLambdaVersionpYnyr3WwLz31jqVLT67js4iZb2GrEJ9NRAGzQnHDpYU": {
+          "GenerateUploadUrlLambdaVersion6JzpEBvy7rXFU4MMCb3dYAn2jZ7qT341rzN4aJ1Q": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GenerateUploadUrlLambdaFunction"
               },
-              "CodeSha256": "A115HBogQmDmA7QT45PRurkoWR35ZqKCrUviz2IcTUA="
+              "CodeSha256": "Fdk2RUxAWTfxnCt9KGx8N2by7Rc8kLdKJwuuE2z+PUY="
             }
           },
           "ApiGatewayRestApi": {
@@ -1112,7 +1112,7 @@
               "Type": "TOKEN"
             }
           },
-          "ApiGatewayDeployment1667240447895": {
+          "ApiGatewayDeployment1667245896035": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1462,7 +1462,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z/custom-resources.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z/custom-resources.zip"
               },
               "FunctionName": "serverless-todo-app-dev-custom-resource-apigw-cw-role",
               "Handler": "api-gateway-cloud-watch-role/handler.handler",
@@ -2168,7 +2168,7 @@
           "AuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AuthLambdaVersionnK3IRofQYouVo859mVJNGUGCbcEDv4JJtst6h2ODF5E"
+              "Ref": "AuthLambdaVersionNCuyNn3XzeL00voKPi8o3Bpal3VdAZ7jsfTeAfIWY"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-AuthLambdaFunctionQualifiedArn"
@@ -2177,7 +2177,7 @@
           "GetTodosLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetTodosLambdaVersion7UBAvCO5xWUqXWWLkr8AbiyTvGkr3RLWvzPhSoypW8Q"
+              "Ref": "GetTodosLambdaVersion3AzsHjEnBrAYmXSk4RXkENru8iacpVO5EIbqTTuORhM"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-GetTodosLambdaFunctionQualifiedArn"
@@ -2186,7 +2186,7 @@
           "CreateTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateTodoLambdaVersion8CRfF8VrAkIEvfRJEeebCJrLuSkUCWmTJLOO3b6AI"
+              "Ref": "CreateTodoLambdaVersionaBmNSXopUnpQUZSY0CTcrQL65HGUc2E0PxLj9U1AyQ"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-CreateTodoLambdaFunctionQualifiedArn"
@@ -2195,7 +2195,7 @@
           "UpdateTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateTodoLambdaVersion2R4tuFQ0Jknai5bHE9RPlpHZRkU03gBm40UqJJi4"
+              "Ref": "UpdateTodoLambdaVersionVR59ElhWtYHEDAPPqDEKrxQVnItHBDWJXzh5GSI3UY"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-UpdateTodoLambdaFunctionQualifiedArn"
@@ -2204,7 +2204,7 @@
           "DeleteTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteTodoLambdaVersionQ69ZQVmL7ETpwB8asDA1o3JrLSHXIW6j2QOOnUv8GAM"
+              "Ref": "DeleteTodoLambdaVersionY9qfHQgCvB350XTxkpt9XpdeUnZ9z2U0eaFzeg0m1Zc"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-DeleteTodoLambdaFunctionQualifiedArn"
@@ -2213,7 +2213,7 @@
           "GenerateUploadUrlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GenerateUploadUrlLambdaVersionpYnyr3WwLz31jqVLT67js4iZb2GrEJ9NRAGzQnHDpYU"
+              "Ref": "GenerateUploadUrlLambdaVersion6JzpEBvy7rXFU4MMCb3dYAn2jZ7qT341rzN4aJ1Q"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-GenerateUploadUrlLambdaFunctionQualifiedArn"
@@ -2388,7 +2388,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "AuthLambdaVersionnK3IRofQYouVo859mVJNGUGCbcEDv4JJtst6h2ODF5E"
+        "versionLogicalId": "AuthLambdaVersionNCuyNn3XzeL00voKPi8o3Bpal3VdAZ7jsfTeAfIWY"
       },
       "GetTodos": {
         "handler": "s_GetTodos.handler",
@@ -2442,7 +2442,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetTodosLambdaVersion7UBAvCO5xWUqXWWLkr8AbiyTvGkr3RLWvzPhSoypW8Q"
+        "versionLogicalId": "GetTodosLambdaVersion3AzsHjEnBrAYmXSk4RXkENru8iacpVO5EIbqTTuORhM"
       },
       "CreateTodo": {
         "handler": "s_CreateTodo.handler",
@@ -2511,7 +2511,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateTodoLambdaVersion8CRfF8VrAkIEvfRJEeebCJrLuSkUCWmTJLOO3b6AI"
+        "versionLogicalId": "CreateTodoLambdaVersionaBmNSXopUnpQUZSY0CTcrQL65HGUc2E0PxLj9U1AyQ"
       },
       "UpdateTodo": {
         "handler": "s_UpdateTodo.handler",
@@ -2570,7 +2570,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "UpdateTodoLambdaVersion2R4tuFQ0Jknai5bHE9RPlpHZRkU03gBm40UqJJi4"
+        "versionLogicalId": "UpdateTodoLambdaVersionVR59ElhWtYHEDAPPqDEKrxQVnItHBDWJXzh5GSI3UY"
       },
       "DeleteTodo": {
         "handler": "s_DeleteTodo.handler",
@@ -2621,7 +2621,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "DeleteTodoLambdaVersionQ69ZQVmL7ETpwB8asDA1o3JrLSHXIW6j2QOOnUv8GAM"
+        "versionLogicalId": "DeleteTodoLambdaVersionY9qfHQgCvB350XTxkpt9XpdeUnZ9z2U0eaFzeg0m1Zc"
       },
       "GenerateUploadUrl": {
         "handler": "s_GenerateUploadUrl.handler",
@@ -2678,7 +2678,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GenerateUploadUrlLambdaVersionpYnyr3WwLz31jqVLT67js4iZb2GrEJ9NRAGzQnHDpYU"
+        "versionLogicalId": "GenerateUploadUrlLambdaVersion6JzpEBvy7rXFU4MMCb3dYAn2jZ7qT341rzN4aJ1Q"
       }
     },
     "resources": {
@@ -2838,7 +2838,7 @@
     "appUid": "Yy3Vs1LxJdbwBnjWrx"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1667240518265-2022-10-31T18:21:58.265Z",
+    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1667245954746-2022-10-31T19:52:34.746Z",
     "artifact": ""
   }
 }

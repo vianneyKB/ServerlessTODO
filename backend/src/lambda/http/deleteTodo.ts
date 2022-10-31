@@ -5,7 +5,7 @@ import { deleteTodo } from '../../businessLogic/todos'
 import { getUserId } from '../utils'
 // import * as middy from 'middy'
 
-import { cors, httpErrorHandler } from 'middy/middlewares'
+// import { cors, httpErrorHandler } from 'middy/middlewares'
 // import { getUserId } from '../utils'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
@@ -44,10 +44,10 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     // }
   }
 
-handler
-  .caller(httpErrorHandler())
-  .use(
-    cors({
-      credentials: true
-    })
-  )
+// handler
+//   .caller(httpErrorHandler())
+//   .use(
+//     cors({
+//       credentials: true
+//     })
+//   )
