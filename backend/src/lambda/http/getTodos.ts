@@ -2,6 +2,7 @@ import 'source-map-support/register'
 
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
 import { getAllTodosByUserId } from '../../businessLogic/todos';
+import { getUserId } from '../utils';
 // import * as middy from 'middy'
 
 // import { cors } from 'middy/middlewares'
@@ -12,9 +13,10 @@ import { getAllTodosByUserId } from '../../businessLogic/todos';
 export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
     // Write your code here
-    const authorization = event.headers.Authorization;
-    const split = authorization.split(' ');
-    const jwtToken = split[1];
+    // const authorization = event.headers.Authorization;
+    // const split = authorization.split('-');
+    // const jwtToken = split[1];
+    const jwtToken = getUserId(event)
     const todos = await getAllTodosByUserId(jwtToken);
 
     return {

@@ -2,6 +2,7 @@ import 'source-map-support/register'
 
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
 import { deleteTodo } from '../../businessLogic/todos'
+import { getUserId } from '../utils'
 // import * as middy from 'middy'
 
 // import { cors, httpErrorHandler } from 'middy/middlewares'
@@ -9,9 +10,9 @@ import { deleteTodo } from '../../businessLogic/todos'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
-    const authorization = event.headers.Authorization;
-    const split = authorization.split(' ');
-    const jwtToken = split[1];
+    // const authorization = event.headers.Authorization;
+    // const split = authorization.split(' ');
+    const jwtToken = getUserId(event)
     const todoId = event.pathParameters.todoId
     const deleteData = await deleteTodo(todoId, jwtToken);
     // const userId = getUserId(event);

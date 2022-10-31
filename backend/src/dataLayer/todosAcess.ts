@@ -114,14 +114,16 @@ async updateTodo(todo: TodoUpdate, userId: string, todoId: string): Promise<Todo
         ":done": todo.done,
       },
       ExpressionAttributeNames:{
-        "#myname": "name"
-      }
+        "#myname": "name",
+        "dueDate": "dueDate",
+        "done": "done"
+      },
     }).promise()
 
-    const atrib = result.Attributes
+    const attrib = result.Attributes
 
     logger.info('updateTodo ' + JSON.stringify({result: todo}))
-    return atrib as TodoUpdate
+    return attrib as TodoUpdate
   }
 
 async generateUploadUrl(todoId: string): Promise<string> 

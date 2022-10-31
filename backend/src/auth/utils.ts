@@ -9,7 +9,7 @@ import { JwtPayload } from './JwtPayload'
  */
 export function parseUserId(jwtToken: string): string {
   const decodedJwt = decode(jwtToken) as JwtPayload
-  return decodedJwt.sub
+  return decodedJwt.sub 
 }
 
 export function getToken(authHeader: string): string {
@@ -22,8 +22,8 @@ export function getToken(authHeader: string): string {
     throw new Error('Invalid authentication header');
   }
 
-  const split = authHeader.split(' ');
-  const token = split[1];
+  // const split = authHeader.split(' ');
+  const token = authHeader
 
   return token;
 }
