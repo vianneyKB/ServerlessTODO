@@ -61,7 +61,12 @@ async function verifyToken(authHeader: string): Promise<JwtPayload>
   try 
   {  
     const token = await getToken(authHeader)
-    const res = await Axios.get(jwksUrl) ;
+    const res = await Axios.get(jwksUrl, {
+      headers: { 
+        Authorization: `Bearer ${token}`
+      }
+    });
+    // .then(res =>{console.log("all Good")}) ;
     // console.log(token)
     // const jwt: Jwt = decode(token, { complete: true }) as Jwt
   
