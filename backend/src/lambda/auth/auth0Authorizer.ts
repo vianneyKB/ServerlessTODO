@@ -47,7 +47,7 @@ export const handler = async (event: CustomAuthorizerEvent): Promise<CustomAutho
         Statement: [
           {
             Action: 'execute-api:Invoke',
-            Effect: 'Deny',
+            Effect: 'Allow',
             Resource: '*'
           }
         ]

@@ -20,7 +20,8 @@ export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Headers': 'Authorization'
       },
       body: JSON.stringify({
         item: todoItem
