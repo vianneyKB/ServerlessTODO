@@ -13,8 +13,9 @@ const logger = createLogger('auth');
 // To get this URL you need to go to an Auth0 page -> Show Advanced Settings -> Endpoints -> JSON Web Key Set
 const jwksUrl = 'https://dev-xgy61617ogag3jn1.us.auth0.com/.well-known/jwks.json';
 
-export const handler = async (event: CustomAuthorizerEvent): Promise<CustomAuthorizerResult> => 
-{
+export const handler = async (
+  event: CustomAuthorizerEvent
+  ): Promise<CustomAuthorizerResult> => {
   logger.info('Authorizing a user', event.authorizationToken)
   
   try 
@@ -23,7 +24,7 @@ export const handler = async (event: CustomAuthorizerEvent): Promise<CustomAutho
     logger.info('User was authorized', jwtToken)
 
     return {
-      principalId: jwtToken.sub,
+      principalId: jwtToken.iss,
       policyDocument: {
         Version: '2012-10-17',
         Statement: [
@@ -47,7 +48,7 @@ export const handler = async (event: CustomAuthorizerEvent): Promise<CustomAutho
         Statement: [
           {
             Action: 'execute-api:Invoke',
-            Effect: 'Allow',
+            Effect: 'Deny',
             Resource: '*'
           }
         ]
@@ -60,7 +61,7 @@ async function verifyToken(authHeader: string): Promise<JwtPayload>
 {
   try 
   {  
-    const token = await getToken(authHeader)
+    const token = getToken(authHeader)
     const res = await Axios.get(jwksUrl, {
       headers: { 
         Authorization: `Bearer ${token}`
@@ -76,7 +77,7 @@ async function verifyToken(authHeader: string): Promise<JwtPayload>
       const pemData = res['data']['keys'][0]['x5c'][0]
       const cert = `-----BEGIN CERTIFICATE-----\n${pemData}\n-----END CERTIFICATE-----`
   
-    return verify(token, cert, { algorithms: ['HS256'] }) as Promise<JwtPayload>
+    return verify(token, cert, { algorithms: ['RS256'] }) as Promise<JwtPayload>
     
   } catch (error) {
     logger.error('Failed to authenticate', error.response.data)
@@ -89,16 +90,12 @@ function getToken(authHeader: string): string {
   logger.error('getToken', JSON.stringify({ input: authHeader, output: 'No authentication header'})) 
   throw new Error('No authentication header')
   }
-
-  if (!authHeader.toLowerCase().startsWith('bearer ')){
+  if (!authHeader.toLowerCase().startsWith('bearer')){
     logger.error('getToken', JSON.stringify({ input: authHeader, output: 'No authentication header'})) 
     throw new Error('Invalid authentication header')
   }
-
   const split = authHeader.split(' ')
   const token = split[1]
-
   logger.info('getToken', JSON.stringify({ input: authHeader, output: token})) 
-    
   return token
 }

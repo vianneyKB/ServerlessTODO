@@ -24,9 +24,9 @@ provider:
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
     PROJECT_NAME: Serverless-Todo
-    TODOS_TABLE: serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
-    # Todos-dev-${self:provider.stage}
-    ATTACHMENT_S3_BUCKET: serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
+    TODOS_TABLE: Todos-dev-${self:provider.stage}
+    # serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-vianney-images-dev-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
     AUTH_0_SECRET_ID: eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO
     SIGNED_URL_EXPIRATION: 300
