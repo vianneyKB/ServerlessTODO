@@ -1,22 +1,21 @@
- import * as AWS from 'aws-sdk'
+ import * as AWS from 'aws-sdk';
 //  const AWSXRay = require('aws-xray-sdk')
- import { DocumentClient } from 'aws-sdk/clients/dynamodb'
- import { TodoItem } from '../models/TodoItem'
- import { createLogger } from '../utils/logger'
+ import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+ import { TodoItem } from '../models/TodoItem';
  import { TodoUpdate } from '../models/TodoUpdate';
 import { Types } from 'aws-sdk/clients/s3';
+import { createLogger } from '../utils/logger';
 
 const logger = createLogger('TodosAccess')
-const index = process.env.TODOS_CREATED_AT_INDEX
+// const index = process.env.TODOS_CREATED_AT_INDEX
 export class TodosAccess {
   constructor
   (
     private readonly docClient: DocumentClient = new AWS.DynamoDB.DocumentClient(),
     private readonly todosTable = process.env.TODOS_TABLE,
     private readonly s3Client: Types = new AWS.S3({ signatureVersion: 'v4'}),
-    private readonly bucketName = process.env.S3_BUCKET_NAME,
-  ) 
-  {}
+    private readonly bucketName = process.env.ATTACHMENT_S3_BUCKET,
+  ) {}
 
 // // TODO: Implement the dataLayer logic
 
@@ -50,27 +49,27 @@ export class TodosAccess {
     return todo as TodoItem
   }
 
-  async getTodoById(todoId: string): Promise<TodoItem>  
-  {
-    const result = await this.docClient.query(
-      {
-        TableName: this.todosTable,
-        IndexName: index,
-        KeyConditionExpression: 'todoId = :todoId',
-        ExpressionAttributeValues: 
-        {
-          ':todoId': todoId
-        }
-      }).promise()
+  // async getTodoById(todoId: string): Promise<TodoItem>  
+  // {
+  //   const result = await this.docClient.query(
+  //     {
+  //       TableName: this.todosTable,
+  //       IndexName: index,
+  //       KeyConditionExpression: 'todoId = :todoId',
+  //       ExpressionAttributeValues: 
+  //       {
+  //         ':todoId': todoId
+  //       }
+  //     }).promise()
 
-    const items = result.Items
-      if (items.length !== 0) 
-      {
-        return result.Items[0] as TodoItem
-      }
+  //   const items = result.Items
+  //     if (items.length !== 0) 
+  //     {
+  //       return result.Items[0] as TodoItem
+  //     }
 
-    return null
-  }
+  //   return null
+  // }
 
   async deleteTodo(userId: string, todoId: string): Promise<string>
   {
@@ -108,7 +107,7 @@ export class TodosAccess {
     return attrib as TodoUpdate
   }
 
-async generateUploadUrl(todoId: string): Promise<string> 
+  async generateUploadUrl(todoId: string): Promise<string> 
   {
     logger.info(`Getting URL for todoId: ${todoId}`)
 
@@ -122,25 +121,16 @@ async generateUploadUrl(todoId: string): Promise<string>
     return url as string;
   }
 
-  // async  todoExists(todoId: string, userId: string) {
-  //   const result = await this.docClient.get({
-  //       TableName: this.todosTable,
-  //       Key: { todoId: todoId, userId: userId}
-  //     }).promise()
-  //     logger.info('todoExists ' + JSON.stringify({ fullResult: result, result: !!result.Item}))
-  //   return !!result.Item
-  // } 
-
-  async createDynamoDBClient() {
-    if (process.env.IS_OFFLINE) 
-    {
-      console.log('Creating a local DynamoDB instance')
-      return new AWS.DynamoDB.DocumentClient(
-        {
-        region: 'localhost',
-        endpoint: 'http://localhost:8000'
-        })
-    }
-    return new AWS.DynamoDB.DocumentClient()
-  }
+  // async createDynamoDBClient() {
+  //   if (process.env.IS_OFFLINE) 
+  //   {
+  //     console.log('Creating a local DynamoDB instance')
+  //     return new AWS.DynamoDB.DocumentClient(
+  //       {
+  //       region: 'localhost',
+  //       endpoint: 'http://localhost:8000'
+  //       })
+  //   }
+  //   return new AWS.DynamoDB.DocumentClient()
+  // }
 }
