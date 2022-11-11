@@ -23,39 +23,20 @@ provider:
   # Use these variables in the functions and resouorces section below. For example, 
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    PROJECT_NAME: Serverless-Todo
+    PROJECT_NAME: serverlessapp
     TODOS_TABLE: Todos-dev-${self:provider.stage}
-    # serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
-    ATTACHMENT_S3_BUCKET: serverless-vianney-images-dev-${self:provider.stage}
-    TODOS_CREATED_AT_INDEX: CreatedAtIndex
+    ATTACHMENT_S3_BUCKET: s3-vianney-sls-dev-${self:provider.stage}
     AUTH_0_SECRET_ID: eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO
+    TODOS_CREATED_AT_INDEX: CreatedAtIndex
     SIGNED_URL_EXPIRATION: 300
-
-  logs:
-    # Enable API Gateway logs
-    restApi: true
-
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-            - xray:PutTelemetryRecords
-            - xray:PutTraceSegments
-          Resource: "*"
+    # serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
 
 custom:
   documentation:
     api:
       info:
         version: '1.0.0'
-        title: Serverless Todo App
+        title: Serverless-api
         description: serverless-api-application-for-Todos
     models:
       - name: CreateTodoRequest
@@ -85,6 +66,25 @@ custom:
               type: string
             done:
               type: boolean
+
+  # logs:
+  #   # Enable API Gateway logs
+  #   restApi: true
+
+  # iam:
+  #   role:
+  #     statements:
+  #       - Effect: Allow
+  #         Action:
+  #           - dynamodb:Query
+  #           - dynamodb:Scan
+  #           - dynamodb:GetItem
+  #           - dynamodb:PutItem
+  #           - dynamodb:UpdateItem
+  #           - dynamodb:DeleteItem
+  #           - xray:PutTelemetryRecords
+  #           - xray:PutTraceSegments
+  #         Resource: "*"
                   
 functions:
 
@@ -241,6 +241,23 @@ resources:
           Ref: ApiGatewayRestApi
         ValidateRequestBody: true
         ValidateRequestParameters: false
+    AttachmentsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
 
     # Add necessary AWS resources. You will need at least the following AWS resources
     # TODO: Fill the properties
@@ -259,11 +276,16 @@ resources:
       Properties:
         ResponseParameters:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-          gatewayresponse.header.Access-Control-Allow-Methods: "'POST,PATCH,PUT,GET,OPTIONS'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
         ResponseType: DEFAULT_4XX
         RestApiId:
           Ref: ApiGatewayRestApi
+
+
+              # method.response.header.Access-Control-Allow-Methods: "'OPTIONS,POST'"
+              # method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'"
+              # method.response.header.Access-Control-Allow-Origin: "'*'"
 
     GatewayResponseDefault5XX:
       Type: AWS::ApiGateway::GatewayResponse
@@ -280,23 +302,6 @@ resources:
 
     # TODO: Complete the bucket properties below. 
     # Do not forget to add the CorsConfiguration propoerty
-    AttachmentsBucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
-        CorsConfiguration:
-          CorsRules:
-            - AllowedOrigins:
-                - '*'
-              AllowedHeaders:
-                - '*'
-              AllowedMethods:
-                - GET
-                - PUT
-                - POST
-                - DELETE
-                - HEAD
-              MaxAge: 3000
 
     # TODO: Complete the policy below and attach it to the bucket defined above
     # For cross referencing the name of the bucket, use "!Ref AttachmentsBucket"
