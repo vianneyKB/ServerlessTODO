@@ -8,7 +8,7 @@
       "name": "aws",
       "runtime": "nodejs12.x",
       "stage": "dev",
-      "region": "us-east-2",
+      "region": "us-east-1",
       "tracing": {
         "lambda": true,
         "apiGateway": true
@@ -301,7 +301,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_Auth.handler",
               "Runtime": "nodejs12.x",
@@ -339,7 +339,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_GetTodos.handler",
               "Runtime": "nodejs12.x",
@@ -378,7 +378,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_CreateTodo.handler",
               "Runtime": "nodejs12.x",
@@ -417,7 +417,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_UpdateTodo.handler",
               "Runtime": "nodejs12.x",
@@ -456,7 +456,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_DeleteTodo.handler",
               "Runtime": "nodejs12.x",
@@ -495,7 +495,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/serverless-todo-app.zip"
               },
               "Handler": "s_GenerateUploadUrl.handler",
               "Runtime": "nodejs12.x",
@@ -527,64 +527,64 @@
               "GenerateUploadUrlLogGroup"
             ]
           },
-          "AuthLambdaVersionzbuIblxiyoONfUbtLHuLWK9b7Uk5IWDcc0YUWbBhVgM": {
+          "AuthLambdaVersionVcRtS6XNhBIYbsm0jEeCG4zhEPcdnDcw4glnyxW4w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AuthLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
-          "GetTodosLambdaVersionul5DudK3ELl5JrTkPTOGM7ToZo0NTv0E7Hak89WwxlU": {
+          "GetTodosLambdaVersion3RaZpimgQH1osggeW6GkX2x4MLJNNbmpcCOuroj2Ps": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetTodosLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
-          "CreateTodoLambdaVersionnB8K1CvAryQbPpW4pYSMJHEICv78HJOMa6c7PUCe7nk": {
+          "CreateTodoLambdaVersionKAE2rYoymKsuOEhLlRQOtoQwH8mw2a5IjTCjkGU5yU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateTodoLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
-          "UpdateTodoLambdaVersionnnNVVSjjLX1UviPA0UaUX503Rb9dSunkNGV1iUd74": {
+          "UpdateTodoLambdaVersionkKdLRD4uya0yvhRMLStg8m7BRvOvdE5SjimnAIEDTg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateTodoLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
-          "DeleteTodoLambdaVersionm7SXGOuhhQr6yz8m3Sk7qhnV2mTsT0uApwYTpWhcgIQ": {
+          "DeleteTodoLambdaVersionStkqPqltmJuScpMbWespykr7jdsIhKVAcBPakNl5AI4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteTodoLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
-          "GenerateUploadUrlLambdaVersion26t85C59zgp2AlDEehnknmC37qBeHwuK47pkzSB0QU": {
+          "GenerateUploadUrlLambdaVersion2xFRr9YOtAYntTEZ4TVTnrY2R3aKIYbIGMhYwwwT8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GenerateUploadUrlLambdaFunction"
               },
-              "CodeSha256": "NSr3WHY35Ul7khC43Y3ghcx+M2YRszfcCBa4YPvFwI4="
+              "CodeSha256": "ymfti0Ej3TA0TaKQZ90KFqJsgwdRFO2FMvZL2lV4vUI="
             }
           },
           "ApiGatewayRestApi": {
@@ -1058,7 +1058,7 @@
               "Type": "TOKEN"
             }
           },
-          "ApiGatewayDeployment1668280587196": {
+          "ApiGatewayDeployment1668281219230": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1408,7 +1408,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z/custom-resources.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z/custom-resources.zip"
               },
               "FunctionName": "serverless-todo-app-dev-custom-resource-apigw-cw-role",
               "Handler": "api-gateway-cloud-watch-role/handler.handler",
@@ -1479,7 +1479,7 @@
                           "dynamodb:Query",
                           "dynamodb:GetItem"
                         ],
-                        "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                        "Resource": "arn:aws:dynamodb:us-east-1:*:table/Todos-dev-dev"
                       },
                       {
                         "Effect": "Allow",
@@ -1550,7 +1550,7 @@
                         "Action": [
                           "dynamodb:PutItem"
                         ],
-                        "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                        "Resource": "arn:aws:dynamodb:us-east-1:*:table/Todos-dev-dev"
                       },
                       {
                         "Effect": "Allow",
@@ -1622,7 +1622,7 @@
                           "dynamodb:PutItem",
                           "dynamodb:UpdateItem"
                         ],
-                        "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                        "Resource": "arn:aws:dynamodb:us-east-1:*:table/Todos-dev-dev"
                       },
                       {
                         "Effect": "Allow",
@@ -1693,7 +1693,7 @@
                           "dynamodb:DeleteItem",
                           "dynamodb:GetItem"
                         ],
-                        "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                        "Resource": "arn:aws:dynamodb:us-east-1:*:table/Todos-dev-dev"
                       },
                       {
                         "Effect": "Allow",
@@ -1954,70 +1954,70 @@
               }
             }
           },
-          "CWLSubFilterAuthLogGroupUsEast2": {
+          "CWLSubFilterAuthLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "AuthLogGroup"
               }
             }
           },
-          "CWLSubFilterGetTodosLogGroupUsEast2": {
+          "CWLSubFilterGetTodosLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "GetTodosLogGroup"
               }
             }
           },
-          "CWLSubFilterCreateTodoLogGroupUsEast2": {
+          "CWLSubFilterCreateTodoLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "CreateTodoLogGroup"
               }
             }
           },
-          "CWLSubFilterUpdateTodoLogGroupUsEast2": {
+          "CWLSubFilterUpdateTodoLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "UpdateTodoLogGroup"
               }
             }
           },
-          "CWLSubFilterDeleteTodoLogGroupUsEast2": {
+          "CWLSubFilterDeleteTodoLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "DeleteTodoLogGroup"
               }
             }
           },
-          "CWLSubFilterGenerateUploadUrlLogGroupUsEast2": {
+          "CWLSubFilterGenerateUploadUrlLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
               "LogGroupName": {
                 "Ref": "GenerateUploadUrlLogGroup"
               }
             }
           },
-          "CWLSubFilterApiGatewayLogGroupUsEast2": {
+          "CWLSubFilterApiGatewayLogGroupUsEast1": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
               "FilterPattern": "\"SLS_ACCESS_LOG\"",
               "LogGroupName": {
                 "Ref": "ApiGatewayLogGroup"
@@ -2048,7 +2048,7 @@
           "AuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AuthLambdaVersionzbuIblxiyoONfUbtLHuLWK9b7Uk5IWDcc0YUWbBhVgM"
+              "Ref": "AuthLambdaVersionVcRtS6XNhBIYbsm0jEeCG4zhEPcdnDcw4glnyxW4w"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-AuthLambdaFunctionQualifiedArn"
@@ -2057,7 +2057,7 @@
           "GetTodosLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetTodosLambdaVersionul5DudK3ELl5JrTkPTOGM7ToZo0NTv0E7Hak89WwxlU"
+              "Ref": "GetTodosLambdaVersion3RaZpimgQH1osggeW6GkX2x4MLJNNbmpcCOuroj2Ps"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-GetTodosLambdaFunctionQualifiedArn"
@@ -2066,7 +2066,7 @@
           "CreateTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateTodoLambdaVersionnB8K1CvAryQbPpW4pYSMJHEICv78HJOMa6c7PUCe7nk"
+              "Ref": "CreateTodoLambdaVersionKAE2rYoymKsuOEhLlRQOtoQwH8mw2a5IjTCjkGU5yU"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-CreateTodoLambdaFunctionQualifiedArn"
@@ -2075,7 +2075,7 @@
           "UpdateTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateTodoLambdaVersionnnNVVSjjLX1UviPA0UaUX503Rb9dSunkNGV1iUd74"
+              "Ref": "UpdateTodoLambdaVersionkKdLRD4uya0yvhRMLStg8m7BRvOvdE5SjimnAIEDTg"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-UpdateTodoLambdaFunctionQualifiedArn"
@@ -2084,7 +2084,7 @@
           "DeleteTodoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteTodoLambdaVersionm7SXGOuhhQr6yz8m3Sk7qhnV2mTsT0uApwYTpWhcgIQ"
+              "Ref": "DeleteTodoLambdaVersionStkqPqltmJuScpMbWespykr7jdsIhKVAcBPakNl5AI4"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-DeleteTodoLambdaFunctionQualifiedArn"
@@ -2093,7 +2093,7 @@
           "GenerateUploadUrlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GenerateUploadUrlLambdaVersion26t85C59zgp2AlDEehnknmC37qBeHwuK47pkzSB0QU"
+              "Ref": "GenerateUploadUrlLambdaVersion2xFRr9YOtAYntTEZ4TVTnrY2R3aKIYbIGMhYwwwT8"
             },
             "Export": {
               "Name": "sls-serverless-todo-app-dev-GenerateUploadUrlLambdaFunctionQualifiedArn"
@@ -2272,7 +2272,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "AuthLambdaVersionzbuIblxiyoONfUbtLHuLWK9b7Uk5IWDcc0YUWbBhVgM"
+        "versionLogicalId": "AuthLambdaVersionVcRtS6XNhBIYbsm0jEeCG4zhEPcdnDcw4glnyxW4w"
       },
       "GetTodos": {
         "handler": "s_GetTodos.handler",
@@ -2327,7 +2327,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetTodosLambdaVersionul5DudK3ELl5JrTkPTOGM7ToZo0NTv0E7Hak89WwxlU"
+        "versionLogicalId": "GetTodosLambdaVersion3RaZpimgQH1osggeW6GkX2x4MLJNNbmpcCOuroj2Ps"
       },
       "CreateTodo": {
         "handler": "s_CreateTodo.handler",
@@ -2390,7 +2390,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateTodoLambdaVersionnB8K1CvAryQbPpW4pYSMJHEICv78HJOMa6c7PUCe7nk"
+        "versionLogicalId": "CreateTodoLambdaVersionKAE2rYoymKsuOEhLlRQOtoQwH8mw2a5IjTCjkGU5yU"
       },
       "UpdateTodo": {
         "handler": "s_UpdateTodo.handler",
@@ -2453,7 +2453,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "UpdateTodoLambdaVersionnnNVVSjjLX1UviPA0UaUX503Rb9dSunkNGV1iUd74"
+        "versionLogicalId": "UpdateTodoLambdaVersionkKdLRD4uya0yvhRMLStg8m7BRvOvdE5SjimnAIEDTg"
       },
       "DeleteTodo": {
         "handler": "s_DeleteTodo.handler",
@@ -2508,7 +2508,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "DeleteTodoLambdaVersionm7SXGOuhhQr6yz8m3Sk7qhnV2mTsT0uApwYTpWhcgIQ"
+        "versionLogicalId": "DeleteTodoLambdaVersionStkqPqltmJuScpMbWespykr7jdsIhKVAcBPakNl5AI4"
       },
       "GenerateUploadUrl": {
         "handler": "s_GenerateUploadUrl.handler",
@@ -2560,7 +2560,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GenerateUploadUrlLambdaVersion26t85C59zgp2AlDEehnknmC37qBeHwuK47pkzSB0QU"
+        "versionLogicalId": "GenerateUploadUrlLambdaVersion2xFRr9YOtAYntTEZ4TVTnrY2R3aKIYbIGMhYwwwT8"
       }
     },
     "resources": {
@@ -2723,7 +2723,7 @@
     "appUid": "Yy3Vs1LxJdbwBnjWrx"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1668280626572-2022-11-12T19:17:06.572Z",
+    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1668281261532-2022-11-12T19:27:41.532Z",
     "artifact": ""
   }
 }

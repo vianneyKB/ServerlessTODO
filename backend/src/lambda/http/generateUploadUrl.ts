@@ -18,7 +18,7 @@ export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent
   const presignedUrl = await generateUploadUrl(todoId)
 
   return {
-    statusCode: 201,
+    statusCode: 202,
       headers: {
         // 'Access-Control-Allow-Origin': '*',
         // 'Access-Control-Allow-Credentials': true,
