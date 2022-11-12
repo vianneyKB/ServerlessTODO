@@ -20,13 +20,11 @@ provider:
     lambda: true
     apiGateway: true
 
-  # Use these variables in the functions and resouorces section below. For example, 
-  # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
     PROJECT_NAME: serverlessapp
     TODOS_TABLE: Todos-dev-${self:provider.stage}
     ATTACHMENT_S3_BUCKET: s3-vianney-sls-dev-${self:provider.stage}
-    AUTH_0_SECRET_ID: eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO
+    AUTH_0_SECRET_ID: --9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
     SIGNED_URL_EXPIRATION: 300
     # serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
@@ -66,35 +64,12 @@ custom:
               type: string
             done:
               type: boolean
-
-  # logs:
-  #   # Enable API Gateway logs
-  #   restApi: true
-
-  # iam:
-  #   role:
-  #     statements:
-  #       - Effect: Allow
-  #         Action:
-  #           - dynamodb:Query
-  #           - dynamodb:Scan
-  #           - dynamodb:GetItem
-  #           - dynamodb:PutItem
-  #           - dynamodb:UpdateItem
-  #           - dynamodb:DeleteItem
-  #           - xray:PutTelemetryRecords
-  #           - xray:PutTraceSegments
-  #         Resource: "*"
                   
 functions:
 
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
 
-    # iamRoleStatementsInherit: true
-
-  # TODO: Configure this function - 
-  # Provide iamRoleStatements property for performing Actions on DynamoDB
   GetTodos:
     handler: src/lambda/http/getTodos.handler
     events:
@@ -116,10 +91,6 @@ functions:
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
-  # TODO: Configure this function - 
-  # Provide iamRoleStatements property. Decide the Actions and AWS Resource. 
-  # To refer to an AWS resource defined in the "Resources" section, you can use "Resource: !GetAtt <resource-name>.Arn"
-  # To validate incoming HTTP requests, we have provided the request schemas in function definition below.
   CreateTodo:
     handler: src/lambda/http/createTodo.handler
     events:
@@ -146,8 +117,6 @@ functions:
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
-  # TODO: Configure this function
-  # Provide property for setting up CORS, Authorizer, iamRoleStatements, and request schemas
   UpdateTodo:
     handler: src/lambda/http/updateTodo.handler
     events:
@@ -174,8 +143,6 @@ functions:
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
-  # TODO: Configure this function
-  # Provide property for setting up CORS, Authorizer, iamRoleStatements
   DeleteTodo:
     handler: src/lambda/http/deleteTodo.handler
     events:
@@ -196,8 +163,6 @@ functions:
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
-  # TODO: Configure this function
-  # Provide property for setting up CORS, Authorizer, iamRoleStatements
   GenerateUploadUrl:
     handler: src/lambda/http/generateUploadUrl.handler
     events:
@@ -217,7 +182,6 @@ functions:
       
 resources:
   Resources:
-    # TODO: Add any necessary AWS resources
     TodosTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -258,10 +222,7 @@ resources:
                 - DELETE
                 - HEAD
               MaxAge: 3000
-
-    # Add necessary AWS resources. You will need at least the following AWS resources
-    # TODO: Fill the properties
-    # Feel free to change the names as you like. 
+ 
     RequestBodyValidator:
       Type: AWS::ApiGateway::RequestValidator
       Properties:
@@ -282,11 +243,6 @@ resources:
         RestApiId:
           Ref: ApiGatewayRestApi
 
-
-              # method.response.header.Access-Control-Allow-Methods: "'OPTIONS,POST'"
-              # method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'"
-              # method.response.header.Access-Control-Allow-Origin: "'*'"
-
     GatewayResponseDefault5XX:
       Type: AWS::ApiGateway::GatewayResponse
       Properties:
@@ -298,13 +254,6 @@ resources:
         RestApiId:
           Ref: ApiGatewayRestApi 
 
-    # TODO: Create a DynamoDB table with local secondary index and a composite key
-
-    # TODO: Complete the bucket properties below. 
-    # Do not forget to add the CorsConfiguration propoerty
-
-    # TODO: Complete the policy below and attach it to the bucket defined above
-    # For cross referencing the name of the bucket, use "!Ref AttachmentsBucket"
     BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:

@@ -18,11 +18,17 @@ export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent
   const presignedUrl = await generateUploadUrl(todoId)
 
   return {
-    statusCode: 202,
+    statusCode: 201,
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        // 'Access-Control-Allow-Origin': '*',
+        // 'Access-Control-Allow-Credentials': true,
+        // 'Access-Control-Allow-Headers': 'Authorization'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST',
         'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Headers': 'Authorization'
+        'Access-Control-Allow-Origin': '*',
+        'X-Requested-With': '*',
       },
       body: JSON.stringify({
         item: presignedUrl
