@@ -7,14 +7,9 @@ import { generateUploadUrl} from '../../businessLogic/todos'
 export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
 {
   // const imageId = uuid.v4()
+  console.log("Processing Event ", event);
   const todoId = event.pathParameters.todoId
 
-  // TODO: Return a presigned URL to upload a file for a TODO item with the provided id 
-    
-  // const todo = await getTodoById(todoId)
-  // todo.attachmentUrl = `https://${bucketName}.s3.amazonaws.com/${todoId}`
-
-  // await updateAttachedImage(todo, imageId);
   const presignedUrl = await generateUploadUrl(todoId)
 
   return {
@@ -31,7 +26,7 @@ export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent
         'X-Requested-With': '*',
       },
       body: JSON.stringify({
-        item: presignedUrl
+        uploadUrl: presignedUrl,
       })
      };
   }

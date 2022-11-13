@@ -6,7 +6,6 @@ import { createTodo } from '../../businessLogic/todos'
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
     console.log("Processing Event ", event);
-    // TODO: Implement creating a new TODO item
 
     const authorization = event.headers.Authorization;
     const split = authorization.split(' ');
@@ -16,7 +15,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     const todoItem = await createTodo(newTodo, jwtToken);
 
     return {
-      statusCode: 200,
+      statusCode: 201,
       headers: {
         // 'Access-Control-Allow-Origin': '*',
         // 'Access-Control-Allow-Credentials': true,
@@ -29,7 +28,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         'X-Requested-With': '*',
       },
       body: JSON.stringify({
-        item: todoItem
+        "item": todoItem
       })
      };
   }

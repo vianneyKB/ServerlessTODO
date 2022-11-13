@@ -6,7 +6,8 @@ import { UpdateTodoRequest } from '../../requests/UpdateTodoRequest'
 
 export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
-    const updatedTodo: UpdateTodoRequest = JSON.parse(event.body)
+    console.log("Processing Event ", event);
+    
     const authorization = event.headers.Authorization;
     const split = authorization.split(' ');
     const jwtToken = split[1];
@@ -14,7 +15,8 @@ export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent
     // TODO: Update a TODO item with the provided id using values in the "updatedTodo" object
 
     const todoId = event.pathParameters.todoId
-    const todoItem = updateTodo(updatedTodo, jwtToken, todoId)
+    const updatedTodo: UpdateTodoRequest = JSON.parse(event.body)
+    const todoItem = await updateTodo(updatedTodo, jwtToken, todoId)
 
     return {
       statusCode: 200,
@@ -24,13 +26,13 @@ export const handler: APIGatewayProxyHandler= async (event: APIGatewayProxyEvent
         // 'Access-Control-Allow-Headers': 'Authorization'
         'Content-Type': 'application/json',
         'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-        'Access-Control-Allow-Methods': 'OPTIONS,POST',
+        'Access-Control-Allow-Methods': 'PATCH,OPTIONS,POST',
         'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Origin': '*',
         'X-Requested-With': '*',
       },
       body: JSON.stringify({
-        item: todoItem
+        "item": todoItem
       })
      };
   }

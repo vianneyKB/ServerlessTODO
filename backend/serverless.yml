@@ -14,7 +14,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'us-east-2'}
 
   tracing:
     lambda: true
@@ -23,7 +23,7 @@ provider:
   environment:
     PROJECT_NAME: serverlessapp
     TODOS_TABLE: Todos-dev-${self:provider.stage}
-    ATTACHMENT_S3_BUCKET: s3-vianney-sls-dev-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: vianney-sls-dev-${self:provider.stage}
     AUTH_0_SECRET_ID: --9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
     SIGNED_URL_EXPIRATION: 300
@@ -198,9 +198,9 @@ resources:
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TODOS_TABLE}
     onlyBody:
-      Type: "AWS::ApiGateway::RequestValidator"
+      Type: AWS::ApiGateway::RequestValidator
       Properties:
-        Name: 'only-body'
+        Name: only-body
         RestApiId:
           Ref: ApiGatewayRestApi
         ValidateRequestBody: true

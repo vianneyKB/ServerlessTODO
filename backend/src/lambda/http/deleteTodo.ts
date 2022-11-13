@@ -5,27 +5,15 @@ import { deleteTodo} from '../../businessLogic/todos'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
+    console.log("Processing Event ", event);
+    
     const authorization = event.headers.Authorization;
     const split = authorization.split(' ');
     const jwtToken = split[1];
     
-    // TODO: Remove a TODO item by id
-    
     const todoId = event.pathParameters.todoId
-
-    // const validTodoId = await todoExists(todoId, jwtToken);
-    // if (!validTodoId) 
-    // {
-    // return {
-    //   statusCode: 404,
-    //   body: JSON.stringify(
-    //     {
-    //     error: 'Todo does not exist'
-    //     })
-    //   }
-    // }
     
-    const todoItem = await deleteTodo(todoId, jwtToken);
+    const deleteData  = await deleteTodo(todoId, jwtToken);
 
     return {
       statusCode: 200,
@@ -40,9 +28,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         'Access-Control-Allow-Origin': '*',
         'X-Requested-With': '*',
       },
-      body: JSON.stringify({
-        item: todoItem
-      })
+      body: deleteData,
      };
 
   }
