@@ -277,7 +277,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_Auth.handler",
         "Runtime": "nodejs12.x",
@@ -291,8 +291,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -315,7 +315,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_GetTodos.handler",
         "Runtime": "nodejs12.x",
@@ -329,8 +329,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -354,7 +354,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_CreateTodo.handler",
         "Runtime": "nodejs12.x",
@@ -368,8 +368,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -393,7 +393,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_UpdateTodo.handler",
         "Runtime": "nodejs12.x",
@@ -407,8 +407,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -432,7 +432,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_DeleteTodo.handler",
         "Runtime": "nodejs12.x",
@@ -446,8 +446,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -471,7 +471,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/serverless-todo-app.zip"
         },
         "Handler": "s_GenerateUploadUrl.handler",
         "Runtime": "nodejs12.x",
@@ -485,8 +485,8 @@
           "Variables": {
             "PROJECT_NAME": "serverlessapp",
             "TODOS_TABLE": "Todos-dev-dev",
-            "ATTACHMENT_S3_BUCKET": "vianney-sls-dev-dev",
-            "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE",
+            "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-dev",
+            "AUTH_0_SECRET_ID": "eceTb_BsbHFTgWTqR4VN2i8h763SB6J9H2pLyUCFW0519n9rKmHGzm2pW5SZB2FO",
             "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
             "SIGNED_URL_EXPIRATION": "300"
           }
@@ -503,64 +503,64 @@
         "GenerateUploadUrlLogGroup"
       ]
     },
-    "AuthLambdaVersionGxRVahIM32j1jfzomFwIljrkJU7DReLRxln1bzRv3OE": {
+    "AuthLambdaVersions6PlPyeHuZQj3RY1ZOB4bH3kKZmMNFBXHTwvyxmC8o": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
-    "GetTodosLambdaVersionEx7BGfmAAnIBbVfIeNhj1tQbO9iwzw3NoDgicINqjns": {
+    "GetTodosLambdaVersion5vTc6ZfyXhhj8PfM62qC8KFruPCvaaMsemPul0OcVlA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetTodosLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
-    "CreateTodoLambdaVersionHWyyTAGrpIoJNFzx8BlctteLWPn1FitX4ZMKtatqP4": {
+    "CreateTodoLambdaVersionIBNfonIGwcJSXZ9yoJs5vPHEnagkn8AcvIG9ltjI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateTodoLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
-    "UpdateTodoLambdaVersion1nmY8bpKQzWDr9419gLfJYtMo8HEkureab5ieXgF5kA": {
+    "UpdateTodoLambdaVersionxWRrTnQ6dp9ptHtSBkeNPhqAhraTAM4dkFEw8NGhOi8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateTodoLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
-    "DeleteTodoLambdaVersionxnW8jZTtHYACfpEMCVwzrH83Xtv0QzbX8cmAzFoPIm8": {
+    "DeleteTodoLambdaVersionTeQBLApmtdNXQRtL0iGilpdbl5S7K08oEhJfX8Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteTodoLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
-    "GenerateUploadUrlLambdaVersionzfaZ93wKTluEmWhk8tAWJB5KKnufv8WQ8QoP70": {
+    "GenerateUploadUrlLambdaVersionUc2ubOFCQ40Z20adV2q7J4yVa4cYsy61QjDm02rkqk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GenerateUploadUrlLambdaFunction"
         },
-        "CodeSha256": "AS5yb/dxV9oy60ULOg0ExgdVDYLO7y7YZLbBbT6PwX0="
+        "CodeSha256": "82d1Otn9UEMmqT4CL5npjjbxjEsU0o17FisvflnJMU0="
       }
     },
     "ApiGatewayRestApi": {
@@ -842,14 +842,9 @@
         "MethodResponses": [],
         "RequestValidatorId": {
           "Ref": "RequestBodyValidator"
-        },
-        "RequestModels": {
-          "application/json": "CreateTodoRequest"
         }
       },
-      "DependsOn": [
-        "CreateTodoRequestModel"
-      ]
+      "DependsOn": "AuthApiGatewayAuthorizer"
     },
     "ApiGatewayMethodTodosTodoidVarPatch": {
       "Type": "AWS::ApiGateway::Method",
@@ -897,14 +892,9 @@
         "MethodResponses": [],
         "RequestValidatorId": {
           "Ref": "RequestBodyValidator"
-        },
-        "RequestModels": {
-          "application/json": "UpdateTodoRequest"
         }
       },
-      "DependsOn": [
-        "UpdateTodoRequestModel"
-      ]
+      "DependsOn": "AuthApiGatewayAuthorizer"
     },
     "ApiGatewayMethodTodosTodoidVarDelete": {
       "Type": "AWS::ApiGateway::Method",
@@ -1034,7 +1024,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1668352889046": {
+    "ApiGatewayDeployment1668405136856": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1384,7 +1374,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1668352923461-2022-11-13T15:22:03.461Z/custom-resources.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1668405179813-2022-11-14T05:52:59.813Z/custom-resources.zip"
         },
         "FunctionName": "serverless-todo-app-dev-custom-resource-apigw-cw-role",
         "Handler": "api-gateway-cloud-watch-role/handler.handler",
@@ -1453,17 +1443,20 @@
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query",
-                    "dynamodb:GetItem"
+                    "dynamodb:GetItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:PutItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/Todos-dev-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "s3:PutObject",
                     "s3:GetObject",
                     "xray:PutTraceSegments"
                   ],
-                  "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
+                  "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
                 }
               ]
             }
@@ -1524,17 +1517,20 @@
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "dynamodb:GetItem",
+                    "dynamodb:UpdateItem",
                     "dynamodb:PutItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/Todos-dev-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "s3:PutObject",
                     "s3:GetObject",
                     "xray:PutTraceSegments"
                   ],
-                  "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
+                  "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
                 }
               ]
             }
@@ -1595,17 +1591,20 @@
                 {
                   "Effect": "Allow",
                   "Action": [
-                    "dynamodb:PutItem",
-                    "dynamodb:UpdateItem"
+                    "dynamodb:GetItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:PutItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/Todos-dev-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject",
                     "xray:PutTraceSegments"
                   ],
-                  "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
+                  "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
                 }
               ]
             }
@@ -1667,16 +1666,20 @@
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:DeleteItem",
-                    "dynamodb:GetItem"
+                    "dynamodb:GetItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:PutItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:us-east-2:*:table/Todos-dev-dev"
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/Todos-dev-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject",
                     "xray:PutTraceSegments"
                   ],
-                  "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
+                  "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
                 }
               ]
             }
@@ -1737,11 +1740,21 @@
                 {
                   "Effect": "Allow",
                   "Action": [
+                    "dynamodb:DeleteItem",
+                    "dynamodb:GetItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:PutItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:us-west-2:*:table/Todos-dev-dev"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
                     "s3:PutObject",
                     "s3:GetObject",
                     "xray:PutTraceSegments"
                   ],
-                  "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
+                  "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
                 }
               ]
             }
@@ -1750,60 +1763,6 @@
         "Path": "/",
         "RoleName": "serverlessapp-s3-upload-role-dev",
         "ManagedPolicyArns": []
-      }
-    },
-    "CreateTodoRequestModel": {
-      "Type": "AWS::ApiGateway::Model",
-      "Properties": {
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        },
-        "ContentType": "application/json",
-        "Name": "CreateTodoRequest",
-        "Schema": {
-          "required": [
-            "name",
-            "dueDate"
-          ],
-          "properties": {
-            "name": {
-              "minLength": 1,
-              "type": "string"
-            },
-            "dueDate": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    "UpdateTodoRequestModel": {
-      "Type": "AWS::ApiGateway::Model",
-      "Properties": {
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        },
-        "ContentType": "application/json",
-        "Name": "UpdateTodoRequest",
-        "Schema": {
-          "required": [
-            "name",
-            "dueDate",
-            "done"
-          ],
-          "properties": {
-            "name": {
-              "minLength": 1,
-              "type": "string"
-            },
-            "dueDate": {
-              "type": "string"
-            },
-            "done": {
-              "type": "boolean"
-            }
-          }
-        }
       }
     },
     "TodosTable": {
@@ -1847,26 +1806,71 @@
     "AttachmentsBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "vianney-sls-dev-dev",
+        "AccessControl": "PublicReadWrite",
+        "BucketName": "s3-vianney-sls-dev-dev",
         "CorsConfiguration": {
           "CorsRules": [
             {
-              "AllowedOrigins": [
-                "*"
-              ],
               "AllowedHeaders": [
                 "*"
               ],
               "AllowedMethods": [
                 "GET",
                 "PUT",
-                "POST",
-                "DELETE",
-                "HEAD"
+                "POST"
               ],
-              "MaxAge": 3000
+              "AllowedOrigins": [
+                "http://localhost:3000/",
+                "http://localhost:3000/callback"
+              ],
+              "ExposedHeaders": [
+                "Date"
+              ],
+              "Id": "myCORSRuleId1",
+              "MaxAge": 3600
+            },
+            {
+              "AllowedHeaders": [
+                "x-amz-*"
+              ],
+              "AllowedMethods": [
+                "DELETE"
+              ],
+              "AllowedOrigins": [
+                "http://localhost:3000/",
+                "http://localhost:3000/callback"
+              ],
+              "ExposedHeaders": [
+                "Connection",
+                "Server",
+                "Date",
+                "Proxy-Authenticate"
+              ],
+              "Id": "myCORSRuleId2",
+              "MaxAge": 1800
             }
           ]
+        }
+      }
+    },
+    "BucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Id": "MyPolicy",
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:GetObject",
+              "Resource": "arn:aws:s3:::s3-vianney-sls-dev-dev/*"
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "AttachmentsBucket"
         }
       }
     },
@@ -1886,7 +1890,7 @@
       "Properties": {
         "ResponseParameters": {
           "gatewayresponse.header.Access-Control-Allow-Origin": "'*'",
-          "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+          "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
           "gatewayresponse.header.Access-Control-Allow-Methods": "'GET,OPTIONS,POST'"
         },
         "ResponseType": "DEFAULT_4XX",
@@ -1895,105 +1899,70 @@
         }
       }
     },
-    "GatewayResponseDefault5XX": {
-      "Type": "AWS::ApiGateway::GatewayResponse",
-      "Properties": {
-        "ResponseParameters": {
-          "gatewayresponse.header.Access-Control-Allow-Origin": "'*'",
-          "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-          "gatewayresponse.header.Access-Control-Allow-Methods": "'GET,OPTIONS,POST,DELETE,PATCH,PUT'"
-        },
-        "ResponseType": "DEFAULT_5XX",
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        }
-      }
-    },
-    "BucketPolicy": {
-      "Type": "AWS::S3::BucketPolicy",
-      "Properties": {
-        "PolicyDocument": {
-          "Id": "MyPolicy",
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Sid": "PublicReadForGetBucketObjects",
-              "Effect": "Allow",
-              "Principal": "*",
-              "Action": "s3:GetObject",
-              "Resource": "arn:aws:s3:::vianney-sls-dev-dev/*"
-            }
-          ]
-        },
-        "Bucket": {
-          "Ref": "AttachmentsBucket"
-        }
-      }
-    },
-    "CWLSubFilterAuthLogGroupUsEast2": {
+    "CWLSubFilterAuthLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "AuthLogGroup"
         }
       }
     },
-    "CWLSubFilterGetTodosLogGroupUsEast2": {
+    "CWLSubFilterGetTodosLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "GetTodosLogGroup"
         }
       }
     },
-    "CWLSubFilterCreateTodoLogGroupUsEast2": {
+    "CWLSubFilterCreateTodoLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "CreateTodoLogGroup"
         }
       }
     },
-    "CWLSubFilterUpdateTodoLogGroupUsEast2": {
+    "CWLSubFilterUpdateTodoLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "UpdateTodoLogGroup"
         }
       }
     },
-    "CWLSubFilterDeleteTodoLogGroupUsEast2": {
+    "CWLSubFilterDeleteTodoLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "DeleteTodoLogGroup"
         }
       }
     },
-    "CWLSubFilterGenerateUploadUrlLogGroupUsEast2": {
+    "CWLSubFilterGenerateUploadUrlLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
         "LogGroupName": {
           "Ref": "GenerateUploadUrlLogGroup"
         }
       }
     },
-    "CWLSubFilterApiGatewayLogGroupUsEast2": {
+    "CWLSubFilterApiGatewayLogGroupUsWest2": {
       "Type": "AWS::Logs::SubscriptionFilter",
       "Properties": {
-        "DestinationArn": "arn:aws:logs:us-east-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
+        "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:cdef21fd-3858-4eed-9612-b43a3aad7712#Yy3Vs1LxJdbwBnjWrx#serverless-todo-app#dev",
         "FilterPattern": "\"SLS_ACCESS_LOG\"",
         "LogGroupName": {
           "Ref": "ApiGatewayLogGroup"
@@ -2024,7 +1993,7 @@
     "AuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthLambdaVersionGxRVahIM32j1jfzomFwIljrkJU7DReLRxln1bzRv3OE"
+        "Ref": "AuthLambdaVersions6PlPyeHuZQj3RY1ZOB4bH3kKZmMNFBXHTwvyxmC8o"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-AuthLambdaFunctionQualifiedArn"
@@ -2033,7 +2002,7 @@
     "GetTodosLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetTodosLambdaVersionEx7BGfmAAnIBbVfIeNhj1tQbO9iwzw3NoDgicINqjns"
+        "Ref": "GetTodosLambdaVersion5vTc6ZfyXhhj8PfM62qC8KFruPCvaaMsemPul0OcVlA"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-GetTodosLambdaFunctionQualifiedArn"
@@ -2042,7 +2011,7 @@
     "CreateTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateTodoLambdaVersionHWyyTAGrpIoJNFzx8BlctteLWPn1FitX4ZMKtatqP4"
+        "Ref": "CreateTodoLambdaVersionIBNfonIGwcJSXZ9yoJs5vPHEnagkn8AcvIG9ltjI"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-CreateTodoLambdaFunctionQualifiedArn"
@@ -2051,7 +2020,7 @@
     "UpdateTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateTodoLambdaVersion1nmY8bpKQzWDr9419gLfJYtMo8HEkureab5ieXgF5kA"
+        "Ref": "UpdateTodoLambdaVersionxWRrTnQ6dp9ptHtSBkeNPhqAhraTAM4dkFEw8NGhOi8"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-UpdateTodoLambdaFunctionQualifiedArn"
@@ -2060,7 +2029,7 @@
     "DeleteTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteTodoLambdaVersionxnW8jZTtHYACfpEMCVwzrH83Xtv0QzbX8cmAzFoPIm8"
+        "Ref": "DeleteTodoLambdaVersionTeQBLApmtdNXQRtL0iGilpdbl5S7K08oEhJfX8Y"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-DeleteTodoLambdaFunctionQualifiedArn"
@@ -2069,7 +2038,7 @@
     "GenerateUploadUrlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GenerateUploadUrlLambdaVersionzfaZ93wKTluEmWhk8tAWJB5KKnufv8WQ8QoP70"
+        "Ref": "GenerateUploadUrlLambdaVersionUc2ubOFCQ40Z20adV2q7J4yVa4cYsy61QjDm02rkqk"
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-GenerateUploadUrlLambdaFunctionQualifiedArn"
@@ -2099,15 +2068,6 @@
       },
       "Export": {
         "Name": "sls-serverless-todo-app-dev-ServiceEndpoint"
-      }
-    },
-    "AwsDocApiId": {
-      "Description": "API ID",
-      "Value": {
-        "Ref": "ApiGatewayRestApi"
-      },
-      "Export": {
-        "Name": "sls-serverless-todo-app-dev-AwsDocApiId"
       }
     }
   }

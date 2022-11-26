@@ -1,9 +1,11 @@
 import 'source-map-support/register'
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
 import { createTodo } from '../../businessLogic/todos'
+import * as middy from 'middy'
+import { cors, httpErrorHandler } from 'middy/middlewares'
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
+export const handler = middy( async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
   {
     console.log("Processing Event ", event);
 
@@ -24,11 +26,19 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
         'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
         'Access-Control-Allow-Methods': 'OPTIONS,POST',
         'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000/',
         'X-Requested-With': '*',
       },
       body: JSON.stringify({
-        "item": todoItem
+        item: todoItem
       })
      };
-  }
+  })
+
+handler
+.use(httpErrorHandler())
+.use(
+    cors({
+      credentials: true
+ })
+)

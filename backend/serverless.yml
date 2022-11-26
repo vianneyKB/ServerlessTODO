@@ -7,27 +7,26 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
-  - serverless-aws-documentation
   - serverless-plugin-tracing
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-2'}
+  region: ${opt:region, 'us-west-2'}
+  environment:
+    PROJECT_NAME: serverlessapp
+    TODOS_TABLE: Todos-dev-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: s3-vianney-sls-dev-${self:provider.stage}
+    # AUTH_0_SECRET_ID: w7gCRJ2PdMIm2lx1fdtg6Bkn6oEQYgld2AHLinoWqfD-Fx6S0nWN276pGMiB1bmu
+    TODOS_CREATED_AT_INDEX: CreatedAtIndex
+    SIGNED_URL_EXPIRATION: 300
+    AUTH_0_SECRET_ID: Auth0Secret-${self:provider.stage}
+    AUTH_0_SECRET_FIELD: auth0Secret
 
   tracing:
     lambda: true
     apiGateway: true
-
-  environment:
-    PROJECT_NAME: serverlessapp
-    TODOS_TABLE: Todos-dev-${self:provider.stage}
-    ATTACHMENT_S3_BUCKET: vianney-sls-dev-${self:provider.stage}
-    AUTH_0_SECRET_ID: --9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE
-    TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    SIGNED_URL_EXPIRATION: 300
-    # serverless-c4-todo-vianneykb-images-dev-${self:provider.stage}
 
 custom:
   documentation:
@@ -64,9 +63,32 @@ custom:
               type: string
             done:
               type: boolean
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - xray:PutTelemetryRecords
+            - xray:PutTraceSegments
+            # Allow functions to list all buckets
+            - Effect: Allow
+              Action: 's3:ListBucket'
+              Resource: '*'
+            # Allow functions to read/write objects in a bucket
+            - Effect: Allow
+              Action:
+                - 's3:GetObject'
+                - 's3:PutObject'
+          Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
                   
 functions:
-
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
 
@@ -79,14 +101,18 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-get-todo-role-${self:provider.stage}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
           - dynamodb:Query
           - dynamodb:GetItem
+          - dynamodb:UpdateItem
+          - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
       - Effect: Allow
         Action:
+          - s3:PutObject
           - s3:GetObject
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
@@ -106,13 +132,17 @@ functions:
               "application/json": CreateTodoRequest
           reqValidatorName: RequestBodyValidator
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-create-todo-role-${self:provider.stage}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
+          - dynamodb:GetItem
+          - dynamodb:UpdateItem
           - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
       - Effect: Allow
         Action:
+          - s3:PutObject
           - s3:GetObject
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
@@ -132,14 +162,18 @@ functions:
               "application/json": UpdateTodoRequest
           reqValidatorName: RequestBodyValidator
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-todo-role-${self:provider.stage}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
-          - dynamodb:PutItem
+          - dynamodb:GetItem
           - dynamodb:UpdateItem
+          - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
       - Effect: Allow
         Action:
+          - s3:PutObject
+          - s3:GetObject
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
@@ -152,14 +186,19 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-delete-todo-role-${self:provider.stage}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
           - dynamodb:DeleteItem
           - dynamodb:GetItem
+          - dynamodb:UpdateItem
+          - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
       - Effect: Allow
         Action:
+          - s3:PutObject
+          - s3:GetObject
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
@@ -172,7 +211,15 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-s3-upload-role-${self:provider.stage}
+    iamRoleStatementsInherit: true
     iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+          - dynamodb:GetItem
+          - dynamodb:UpdateItem
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
       - Effect: Allow
         Action:
           - s3:PutObject
@@ -181,7 +228,7 @@ functions:
         Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
       
 resources:
-  Resources:
+  Resources:                                                                                       
     TodosTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -198,30 +245,62 @@ resources:
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TODOS_TABLE}
     onlyBody:
-      Type: AWS::ApiGateway::RequestValidator
+      Type: "AWS::ApiGateway::RequestValidator"
       Properties:
-        Name: only-body
+        Name: 'only-body'
         RestApiId:
           Ref: ApiGatewayRestApi
         ValidateRequestBody: true
         ValidateRequestParameters: false
+
     AttachmentsBucket:
       Type: AWS::S3::Bucket
       Properties:
+        AccessControl: PublicReadWrite
         BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
         CorsConfiguration:
           CorsRules:
-            - AllowedOrigins:
-                - '*'
-              AllowedHeaders:
+            - AllowedHeaders:
                 - '*'
               AllowedMethods:
                 - GET
                 - PUT
                 - POST
+              AllowedOrigins:
+                - 'http://localhost:3000/'
+                - 'http://localhost:3000/callback'
+              ExposedHeaders:
+                - Date
+              Id: myCORSRuleId1
+              MaxAge: 3600
+            - AllowedHeaders:
+                - x-amz-*
+              AllowedMethods:
                 - DELETE
-                - HEAD
-              MaxAge: 3000
+              AllowedOrigins:
+                - 'http://localhost:3000/'
+                - 'http://localhost:3000/callback'
+              ExposedHeaders:
+                - Connection
+                - Server
+                - Date
+                - Proxy-Authenticate
+              Id: myCORSRuleId2
+              MaxAge: 1800
+
+    BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        PolicyDocument:
+          Id: MyPolicy
+          Version: '2012-10-17'
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Allow
+              Principal: '*'
+              Action: 's3:GetObject'
+              Resource: 'arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*'
+        Bucket: !Ref AttachmentsBucket
  
     RequestBodyValidator:
       Type: AWS::ApiGateway::RequestValidator
@@ -237,33 +316,19 @@ resources:
       Properties:
         ResponseParameters:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
           gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
         ResponseType: DEFAULT_4XX
         RestApiId:
           Ref: ApiGatewayRestApi
 
-    GatewayResponseDefault5XX:
-      Type: AWS::ApiGateway::GatewayResponse
-      Properties:
-        ResponseParameters:
-          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST,DELETE,PATCH,PUT'"
-        ResponseType: DEFAULT_5XX
-        RestApiId:
-          Ref: ApiGatewayRestApi 
-
-    BucketPolicy:
-      Type: AWS::S3::BucketPolicy
-      Properties:
-        PolicyDocument:
-          Id: MyPolicy
-          Version: '2012-10-17'
-          Statement:
-            - Sid: PublicReadForGetBucketObjects
-              Effect: Allow
-              Principal: '*'
-              Action: 's3:GetObject'
-              Resource: 'arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*'
-        Bucket: !Ref AttachmentsBucket
+    # GatewayResponseDefault5XX:
+    #   Type: AWS::ApiGateway::GatewayResponse
+    #   Properties:
+    #     ResponseParameters:
+    #       gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+    #       gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+    #       gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST,DELETE,PATCH,PUT'"
+    #     ResponseType: DEFAULT_5XX
+    #     RestApiId:
+    #       Ref: ApiGatewayRestApi 
