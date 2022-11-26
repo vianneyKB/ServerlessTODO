@@ -14,7 +14,7 @@ const logger = createLogger('auth');
 const sId = process.env.AUTH_0_SECRET_ID
 // const sField = process.env.AUTH_0_SECRET_FIELD
 
-const jwksUrl = 'https://dev-xgy61617ogag3jn1.us.auth0.com/.well-known/jwks.json';
+// const jwksUrl = 'https://dev-xgy61617ogag3jn1.us.auth0.com/.well-known/jwks.json';
 
 export const handler = middy( async (event: CustomAuthorizerEvent
   // , context
