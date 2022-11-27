@@ -1,32 +1,29 @@
-import 'source-map-support/register'
 import { CustomAuthorizerEvent, CustomAuthorizerResult } from 'aws-lambda'
-import * as middy from 'middy'
-import { cors, httpErrorHandler } from 'middy/middlewares';
-import { verify } from 'jsonwebtoken'
+import 'source-map-support/register'
+import { verify} from 'jsonwebtoken'
 import { createLogger } from '../../utils/logger'
-import { JwtPayload } from '../../auth/JwtPayload'
 import Axios from 'axios'
+import { JwtPayload } from '../../auth/JwtPayload'
 
 const logger = createLogger('auth');
 
-const sId = process.env.AUTH_0_SECRET_ID
-// const sField = process.env.AUTH_0_SECRET_FIELD
-
 const jwksUrl = 'https://dev-xgy61617ogag3jn1.us.auth0.com/.well-known/jwks.json';
 
-export const handler = middy( async (event: CustomAuthorizerEvent, context): Promise<CustomAuthorizerResult> => 
+
+export const handler = async (
+  event: CustomAuthorizerEvent
+): Promise<CustomAuthorizerResult> => 
 {
+
   logger.info('Authorizing a user', event.authorizationToken)
-  try 
-  {
-    const decodeJwt = await verifyToken(
-      event.authorizationToken, 
-      // context.AUTH0_SECRET[sField]
-      )
-    logger.info('User was authorized', decodeJwt)
+
+  try {
+
+    const jwtToken = await verifyToken(event.authorizationToken)
+    logger.info('User was authorized', jwtToken)
 
     return {
-      principalId: decodeJwt.sub,
+      principalId: jwtToken.sub,
       policyDocument: {
         Version: '2012-10-17',
         Statement: [
@@ -38,10 +35,10 @@ export const handler = middy( async (event: CustomAuthorizerEvent, context): Pro
         ]
       }
     }
-  } 
-  catch (e) 
+  } catch (ex)
   {
-    logger.error('User not authorized', { error: e.message })
+    logger.error('User not authorized', 
+    { error: ex.message })
 
     return {
       principalId: 'user',
@@ -57,55 +54,35 @@ export const handler = middy( async (event: CustomAuthorizerEvent, context): Pro
       }
     }
   }
-})
-
-async function verifyToken(authHeader: string): Promise<JwtPayload> 
-{
-  try 
-  {  
-    const token = getToken(authHeader)
-    const res = await Axios.get(jwksUrl, { headers: { Authorization: `Bearer ${token}`}});
-    const pemData = res['data']['keys'][0]['x5c'][0]
-    const cert = `-----BEGIN CERTIFICATE-----\n${pemData}\n-----END CERTIFICATE-----`
-  
-    return verify(token, cert, { algorithms: ['RS256'] }) as Promise<JwtPayload>
-    
-  } catch (error) {
-    logger.error('Failed to authenticate', error.response.data)
-  }
-  
 }
 
-handler
- .use(httpErrorHandler())
- .use(
-     cors({
-       credentials: true,
-       cache: true,
-       cacheExpiryInMillis: 60000,
-       throwOnFailedCall: true,
-       secrets: {AUTH0_SECRET: sId}
-  })
+async function verifyToken(authHeader: string): Promise<JwtPayload> {
+  try {
 
-)
+    const token = getToken(authHeader)
+    const res = await Axios.get(jwksUrl);
+    const pemData = res['data']['keys'][0]['x5c'][0]
+
+    const cert = `-----BEGIN CERTIFICATE-----\n${pemData}\n-----END CERTIFICATE-----`
+
+    return verify(token, cert, { algorithms: ['RS256'] }) as JwtPayload
+  } catch(err){
+    logger.error('Fail to authenticate', err)
+  }
+}
 
 function getToken(authHeader: string): string {
-  if (!authHeader)
-  { 
-    logger.error('getToken', JSON.stringify({ input: authHeader, output: 'No authentication header'})) 
-    throw new Error('No authentication header')
-  }
+  if (!authHeader) throw new Error('No authentication header')
+  logger.error('No authentication header{authHeader.err}')
 
-  if (!authHeader.toLowerCase().startsWith('bearer'))
-  {
-    logger.error('getToken', JSON.stringify({ input: authHeader, output: 'No authentication header'})) 
+  if (!authHeader.toLowerCase().startsWith('bearer '))
     throw new Error('Invalid authentication header')
-  }
+    logger.error('Invalid authentication header{bearer}')
 
   const split = authHeader.split(' ')
+
   const token = split[1]
 
-  // return verify (token, auth0Secret) as JwtPayload
-
-   return token
+  return token
 }
+

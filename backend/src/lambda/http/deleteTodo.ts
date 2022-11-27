@@ -1,36 +1,30 @@
 import 'source-map-support/register'
 
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
-import { deleteTodo} from '../../businessLogic/todos'
+import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
+import { DeleteToDo} from '../../businessLogic/todos'
 
-export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
-  {
-    console.log("Processing Event ", event);
-    
-    const authorization = event.headers.Authorization;
-    const split = authorization.split(' ');
-    const jwtToken = split[1];
-    
-    const todoId = event.pathParameters.todoId
-    
-    const deleteData  = await deleteTodo(todoId, jwtToken);
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
-    return {
+  // TODO: Remove a TODO item by id
+
+  console.log("Processing Event ", event);
+  
+  const authorization = event.headers.Authorization;
+  const split = authorization.split(' ');
+  const jwtToken = split[1];
+
+  const todoId = event.pathParameters.todoId;
+
+  const deleteData = await DeleteToDo(todoId, jwtToken);
+
+  return {
       statusCode: 200,
       headers: {
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Credentials': true,
-        // 'Access-Control-Allow-Headers': ('Authorization') fetch('https://cors-demo.glitch.me/allow-cors', {mode: "cors" }),
- 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-        'Access-Control-Allow-Methods': 'OPTIONS,POST',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': 'http://localhost:3000/',
-        'X-Requested-With': '*',
+          "Access-Control-Allow-Origin": "*",
       },
       body: deleteData,
-     };
-
   }
+
+};
+
 

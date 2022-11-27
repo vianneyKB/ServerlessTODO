@@ -1,32 +1,24 @@
 import 'source-map-support/register'
 
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
-import { generateUploadUrl} from '../../businessLogic/todos'
-// import * as uuid from 'uuid' , getTodoById, updateAttachedImage
+import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
+import { GenerateUploadUrl} from '../../businessLogic/todos';
 
-export const handler:APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => 
-{
-  // const imageId = uuid.v4()
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+
+  // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
+
   console.log("Processing Event ", event);
-  const todoId = event.pathParameters.todoId
 
-  const presignedUrl = await generateUploadUrl(todoId)
+  const todoId = event.pathParameters.todoId;
+  const returnUrl = await GenerateUploadUrl(todoId);
 
   return {
-    statusCode: 202,
+      statusCode: 202,
       headers: {
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Credentials': true,
-        // 'Access-Control-Allow-Headers': 'Authorization'
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-        'Access-Control-Allow-Methods': 'OPTIONS,POST',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': 'http://localhost:3000/',
-        'X-Requested-With': '*',
+          "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        uploadUrl: presignedUrl,
+          uploadUrl: returnUrl,
       })
-     };
-  }
+  };
+};
