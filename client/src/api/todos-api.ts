@@ -72,7 +72,6 @@ catch(err){
 console.error('get upload url', err)
 }
   return ''
-  // response.data.uploadUrl
 }
 
 export async function uploadFile(uploadUrl: string, file: Buffer): Promise<void> {
