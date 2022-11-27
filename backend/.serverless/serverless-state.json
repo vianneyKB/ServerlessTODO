@@ -19,7 +19,8 @@
         "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-5-dev",
         "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
         "INDEX_NAME": "CreatedAtIndex",
-        "SIGNED_URL_EXPIRATION": "300"
+        "SIGNED_URL_EXPIRATION": "300",
+        "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE"
       },
       "iam": {
         "role": {
@@ -113,6 +114,12 @@
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
               "LogGroupName": "/aws/lambda/serverless-todo-5-dev-hello"
+            }
+          },
+          "AuthLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/serverless-todo-5-dev-Auth"
             }
           },
           "IamRoleLambdaExecution": {
@@ -242,6 +249,12 @@
                               "HelloLogGroup",
                               "Arn"
                             ]
+                          },
+                          {
+                            "Fn::GetAtt": [
+                              "AuthLogGroup",
+                              "Arn"
+                            ]
                           }
                         ]
                       }
@@ -258,7 +271,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-5/dev/1669471551550-2022-11-26T14:05:51.550Z/serverless-todo-5.zip"
+                "S3Key": "serverless/serverless-todo-5/dev/1669473870177-2022-11-26T14:44:30.177Z/serverless-todo-5.zip"
               },
               "Handler": "s_hello.handler",
               "Runtime": "nodejs12.x",
@@ -275,7 +288,8 @@
                   "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-5-dev",
                   "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
                   "INDEX_NAME": "CreatedAtIndex",
-                  "SIGNED_URL_EXPIRATION": "300"
+                  "SIGNED_URL_EXPIRATION": "300",
+                  "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE"
                 }
               },
               "Role": {
@@ -289,14 +303,63 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionlyQ0KOTZwZSKg7Hl8gly9sfnHUSw24K0h0OTULFsgWs": {
+          "AuthLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/serverless-todo-5/dev/1669473870177-2022-11-26T14:44:30.177Z/serverless-todo-5.zip"
+              },
+              "Handler": "s_Auth.handler",
+              "Runtime": "nodejs12.x",
+              "FunctionName": "serverless-todo-5-dev-Auth",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "PassThrough"
+              },
+              "Environment": {
+                "Variables": {
+                  "PROJECT_NAME": "serverlessapp-5",
+                  "TODOS_TABLE": "Todos-dev-5-dev",
+                  "ATTACHMENT_S3_BUCKET": "s3-vianney-sls-dev-5-dev",
+                  "TODOS_CREATED_AT_INDEX": "CreatedAtIndex",
+                  "INDEX_NAME": "CreatedAtIndex",
+                  "SIGNED_URL_EXPIRATION": "300",
+                  "AUTH_0_SECRET_ID": "--9eAfv9W_X2sNgm-YgdZyCBZ0EeW8RIgUYe2uXCTbEwhqYjJ5VOznCGjD5vLvsE"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "AuthLogGroup"
+            ]
+          },
+          "HelloLambdaVersionw5Hc0hcZYgMDk4I7rtxUKJGcnJhRByrvV3EQsrzU8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "d+3LpJ+LE9dcJ5eoYmEiFNgZQikUVYwQt8afd/nkdZk="
+              "CodeSha256": "C7K+jdNA7aXiuwB7e1IAasUkQoitxNUYoBraoFtOUK4="
+            }
+          },
+          "AuthLambdaVersion0WwJtNmF3B0lDvRJ3LafTjMYImBiG0I75yTGdzNNzM": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "AuthLambdaFunction"
+              },
+              "CodeSha256": "C7K+jdNA7aXiuwB7e1IAasUkQoitxNUYoBraoFtOUK4="
             }
           },
           "HttpApi": {
@@ -417,6 +480,16 @@
               }
             }
           },
+          "CWLSubFilterAuthLogGroupUsWest2": {
+            "Type": "AWS::Logs::SubscriptionFilter",
+            "Properties": {
+              "DestinationArn": "arn:aws:logs:us-west-2:802587217904:destination:76ab4467-b68e-4e28-806d-c8dc52f86b2c#ZnsLXCtXtvRSTYp5LY#serverless-todo-5#dev",
+              "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
+              "LogGroupName": {
+                "Ref": "AuthLogGroup"
+              }
+            }
+          },
           "CWLSubFilterHttpApiLogGroupUsWest2": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
@@ -451,10 +524,19 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionlyQ0KOTZwZSKg7Hl8gly9sfnHUSw24K0h0OTULFsgWs"
+              "Ref": "HelloLambdaVersionw5Hc0hcZYgMDk4I7rtxUKJGcnJhRByrvV3EQsrzU8"
             },
             "Export": {
               "Name": "sls-serverless-todo-5-dev-HelloLambdaFunctionQualifiedArn"
+            }
+          },
+          "AuthLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "AuthLambdaVersion0WwJtNmF3B0lDvRJ3LafTjMYImBiG0I75yTGdzNNzM"
+            },
+            "Export": {
+              "Name": "sls-serverless-todo-5-dev-AuthLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -610,7 +692,20 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionlyQ0KOTZwZSKg7Hl8gly9sfnHUSw24K0h0OTULFsgWs"
+        "versionLogicalId": "HelloLambdaVersionw5Hc0hcZYgMDk4I7rtxUKJGcnJhRByrvV3EQsrzU8"
+      },
+      "Auth": {
+        "handler": "s_Auth.handler",
+        "events": [],
+        "name": "serverless-todo-5-dev-Auth",
+        "package": {
+          "artifact": ".serverless\\serverless-todo-5.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "AuthLambdaVersion0WwJtNmF3B0lDvRJ3LafTjMYImBiG0I75yTGdzNNzM"
       }
     },
     "configValidationMode": "warn",
@@ -639,7 +734,7 @@
     "appUid": "ZnsLXCtXtvRSTYp5LY"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-todo-5/dev/1669471551550-2022-11-26T14:05:51.550Z",
+    "artifactDirectoryName": "serverless/serverless-todo-5/dev/1669473870177-2022-11-26T14:44:30.177Z",
     "artifact": ""
   }
 }
